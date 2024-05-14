@@ -12,7 +12,7 @@ class tournamentcontroller extends Controller
 {
     public function create(Request $request){
         $validator=Validator::make($request->all(),[
-            'tournament_name'=>'required',
+            'tournament_name'=>'required|unique:tournaments,tournament_name',
             'tournament_type'=>'required',
             'tournament_venue'=>'required',
             

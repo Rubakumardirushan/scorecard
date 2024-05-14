@@ -10,7 +10,7 @@ class teamcontroller extends Controller
 {
     public function teamcreate(Request $request){
         $validator=Validator::make($request->all(),[
-            'team_name'=>'required',
+            'team_name'=>'required|unique:teams,team_name',
             'tournament_id'=>'required',
             
         ]);
