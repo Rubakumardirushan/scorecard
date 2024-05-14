@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Tournament\TournamentController;
 use App\Http\Controllers\Team\TeamController;
+use App\Http\Controllers\Player\PlayerController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,3 +24,4 @@ Route::get('details', [AuthController::class, 'detail'])->middleware('auth:sanct
 Route::post('verifyotp', [AuthController::class, 'verifyotp']);
 Route::post('create', [TournamentController::class, 'create'])->middleware('auth:sanctum');
 Route::post('teamcreate', [TeamController::class, 'teamcreate'])->middleware('auth:sanctum');
+Route::post('playercreate', [PlayerController::class, 'playercreate'])->middleware('auth:sanctum');
