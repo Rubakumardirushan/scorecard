@@ -82,7 +82,7 @@ class Authcontroller extends Controller
             return response()->json($response,200);
         }
         else{
-            return response()->json(['error'=>'Unauthenticated'],401);
+            return response()->json(['error'=>'Invaild username or password'],401);
         }
 
 
