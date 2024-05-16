@@ -25,3 +25,6 @@ Route::post('verifyotp', [AuthController::class, 'verifyotp']);
 Route::post('create', [TournamentController::class, 'create'])->middleware('auth:sanctum');
 Route::post('teamcreate', [TeamController::class, 'teamcreate'])->middleware('auth:sanctum');
 Route::post('playercreate', [PlayerController::class, 'playercreate'])->middleware('auth:sanctum');
+Route::get('gettournamentid', [TournamentController::class, 'gettournamentid'])->middleware('auth:sanctum');
+Route::get('getteamname', [TeamController::class, 'getteamname'])->middleware('auth:sanctum');
+Route::post('findteam', [TeamController::class, 'findteam'])->middleware('auth:sanctum');

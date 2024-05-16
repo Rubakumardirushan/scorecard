@@ -14,9 +14,19 @@ class playercontroller extends Controller
            'team_id'=>'required',
            'tournament_id'=>'required',
            'player_role'=>'required',
-            'player_jersey_number'=>'required|numeric|unique:players,player_jersey_number'
+            'player_jersey_number'=>'required',
            
        ]);
+       //$jersey=player::where('player_jersey_number',$request->player_jersey_number)->where('tournament_id',$request->tournament_id)->where('team_id',$request->team_id)->exists();
+       $jersey = Player::where('player_jersey_number', $request->player_jersey_number)
+       ->where('tournament_id', $request->tournament_id)
+       ->where('team_id', $request->team_id)
+       ->exists();
+
+       if($jersey){
+              $response['error']='Jersey number already exists';
+              return response()->json($response,200);
+         }
        if($validator->fails()){
            return response()->json($validator->errors(),400);
        }
