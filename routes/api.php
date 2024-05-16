@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Tournament\TournamentController;
 use App\Http\Controllers\Team\TeamController;
 use App\Http\Controllers\Player\PlayerController;
+use App\Http\Controllers\Match\MatchController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,3 +29,4 @@ Route::post('playercreate', [PlayerController::class, 'playercreate'])->middlewa
 Route::get('gettournamentid', [TournamentController::class, 'gettournamentid'])->middleware('auth:sanctum');
 Route::get('getteamname', [TeamController::class, 'getteamname'])->middleware('auth:sanctum');
 Route::post('findteam', [TeamController::class, 'findteam'])->middleware('auth:sanctum');
+Route::post('matchcreate', [MatchController::class, 'matchcreate'])->middleware('auth:sanctum');

@@ -19,6 +19,10 @@ class matchcontroller extends Controller
             
             
         ]);
+        if($request->team1_id==$request->team2_id){
+            $response['error']='Both teams cannot be same';
+            return response()->json($response,200);
+        }
         if($validator->fails()){
             return response()->json($validator->errors(),400);
         }
