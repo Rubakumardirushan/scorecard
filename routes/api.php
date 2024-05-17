@@ -30,3 +30,4 @@ Route::get('gettournamentid', [TournamentController::class, 'gettournamentid'])-
 Route::get('getteamname', [TeamController::class, 'getteamname'])->middleware('auth:sanctum');
 Route::post('findteam', [TeamController::class, 'findteam'])->middleware('auth:sanctum');
 Route::post('matchcreate', [MatchController::class, 'matchcreate'])->middleware('auth:sanctum');
+Route::get('getmatches', [MatchController::class, 'getmatches'])->middleware('auth:sanctum');
