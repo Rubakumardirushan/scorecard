@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Match;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Matches;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\tournament;
 use Illuminate\Support\Facades\Validator;
 class matchcontroller extends Controller
-{
+{  
 
     public function matchcreate(Request $request){
+      
         $validator=Validator::make($request->all(),[
             'team1_id'=>'required',
             'team2_id'=>'required',
@@ -43,5 +45,24 @@ class matchcontroller extends Controller
         $matches = Matches::where('tournament_id',$tournament)->get();
         return response()->json($matches,200);
     }
+     public function storematchid(Request $request){
+       
+$user=User::find(Auth::id());
+
+$user->match_id=$request->match_id;
+$user->match_id = $request->match_id;
+$user->tournament_id=$request->tournament_id;
+$user->save(); // Use save() to update the instance
+$response['message']='Match id stored successfully';
+return response()->json($response,200);
+        
     
+}
+
+public function getmatchid(){
+    $user = Auth::user();
+    $match_id=$user->match_id;
+    $response['match_id']=$match_id;
+    return response()->json($response,200);
+}
 }

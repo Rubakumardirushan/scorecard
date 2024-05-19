@@ -31,3 +31,5 @@ Route::get('getteamname', [TeamController::class, 'getteamname'])->middleware('a
 Route::post('findteam', [TeamController::class, 'findteam'])->middleware('auth:sanctum');
 Route::post('matchcreate', [MatchController::class, 'matchcreate'])->middleware('auth:sanctum');
 Route::get('getmatches', [MatchController::class, 'getmatches'])->middleware('auth:sanctum');
+Route::post('storematchid', [MatchController::class, 'storematchid'])->middleware('auth:sanctum');
+Route::get('getmatchid', [MatchController::class, 'getmatchid'])->middleware('auth:sanctum');
