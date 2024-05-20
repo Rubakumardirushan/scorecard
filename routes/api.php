@@ -33,3 +33,5 @@ Route::post('matchcreate', [MatchController::class, 'matchcreate'])->middleware(
 Route::get('getmatches', [MatchController::class, 'getmatches'])->middleware('auth:sanctum');
 Route::post('storematchid', [MatchController::class, 'storematchid'])->middleware('auth:sanctum');
 Route::get('getmatchid', [MatchController::class, 'getmatchid'])->middleware('auth:sanctum');
+Route::post('teamname', [MatchController::class, 'teamname'])->middleware('auth:sanctum');
+Route::post('storetoss', [MatchController::class, 'storetoss'])->middleware('auth:sanctum');
