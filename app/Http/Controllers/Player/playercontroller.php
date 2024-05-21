@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Player;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\player;
+use App\Models\team;
+use App\Models\tournament;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 class playercontroller extends Controller
 {
@@ -35,4 +39,15 @@ class playercontroller extends Controller
        $response['message']='Player created successfully';
        return response()->json($response,200);
    }
+
+public function getplayers(Request $request){
+    $user=User::where('id',Auth::id())->pluck('tournament_id');
+    $teamname=$request->team_name;
+    $team_id=team::where('team_name',$teamname)->where('tournament_id',$user[0])->pluck('id');
+    $player=player::where('team_id',$team_id[0])->pluck('player_name');
+    return response()->json($player,200);
+
+
+}
+
 }

@@ -96,6 +96,19 @@ public function storetoss(Request $request){
 }
 
 
+public function tosscheck(){
+    $matchid=User::where('id',Auth::id())->pluck('match_id');
+    $toss=Matches::where('id',$matchid)->pluck('toss_winner');
+    
+    if($toss[0]!=null){
+        $response['message']=0;
+        return response()->json($response,200);
+    }
+
+    $response['message']=1;
+    return response()->json($response,200);
+
+}
 
 
 }
